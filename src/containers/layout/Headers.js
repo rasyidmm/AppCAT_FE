@@ -6,8 +6,23 @@ import AppleIcon from '@material-ui/icons/Apple';
 import Avatar from '@material-ui/core/Avatar';
 import imgAvatar from '../../assets/image/avatar.png'
 import clsx from 'clsx';
-import Sidebar from './sidebar'
+import Sidebar from './Sidebar'
+const drawerWidth = 240
 const useStyles = makeStyles((theme) => ({
+    appBar: {
+        transition: theme.transitions.create(['margin', 'width'], {
+          easing: theme.transitions.easing.sharp,
+          duration: theme.transitions.duration.leavingScreen,
+        }),
+      },
+      appBarShift: {
+        width: `calc(100% - ${drawerWidth}px)`,
+        marginLeft: drawerWidth,
+        transition: theme.transitions.create(['margin', 'width'], {
+          easing: theme.transitions.easing.easeOut,
+          duration: theme.transitions.duration.enteringScreen,
+        }),
+      },
     menuButton: {
         marginRight: theme.spacing(2),
     },
@@ -32,26 +47,27 @@ const useStyles = makeStyles((theme) => ({
     }
     }));
 
-const Header = ()=>{
+const Header = (props)=>{
+    const{onClose}=props;
     const[menuakun,setMenuAkun] = useState(false)
     const[sideBar,setSideBar]=useState(false)
     const classes = useStyles();
     const anchorRef = useRef(null);
-
     const handleOpenSideBar=()=>{
-        console.log('side aktive')
+        setSideBar(true)
+    }
+    const handleCloseSideBar=()=>{
+        setSideBar(false)
     }
 
     const handleOpenMenuAkun=()=>{
         setMenuAkun((prevOpen) => !prevOpen);
-        console.log('togle run');
     }
     const handleCloseMenuAkun=(event)=>{
         if (anchorRef.current && anchorRef.current.contains(event.target)) {
             return;
-          }
-      
-          setMenuAkun(false);
+        }
+        setMenuAkun(false);
     }
     const prevOpen = React.useRef(menuakun);
     useEffect(() => {
@@ -63,8 +79,11 @@ const Header = ()=>{
     }, [menuakun])
     return(
         <Fragment>
-            <AppBar 
-                position="static">
+            <AppBar
+                position="fixed"
+                className={clsx(classes.appBar, {
+                  [classes.appBarShift]: sideBar,
+                })}>
                 <Toolbar>
                     <IconButton
                         onClick={handleOpenSideBar}
@@ -87,33 +106,31 @@ const Header = ()=>{
                             style={{ transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom' }}
                         >
                             <Paper>
-                                <ClickAwayListener>
-                                    <Card autoFocusItem={menuakun} className={classes.cardMenuAkun}>
-                                        <CardMedia>
-                                            <div className={classes.avatar}> 
+                                <Card className={classes.cardMenuAkun}>
+                                    <CardMedia>
+                                            <CardContent className={classes.avatar}> 
                                                 <Avatar alt="Remy Sharp" src={imgAvatar}  className={classes.avatarsize}/>
-                                            </div>
+                                            </CardContent>
                                         </CardMedia>
                                         <CardContent>
                                             
                                         <Typography className={classes.title} color="textSecondary" gutterBottom>
                                             Hi, Rasyid
                                         </Typography>
-                                        <MenuList >
+                                        <MenuList  autoFocusItem={menuakun}>
                                             <MenuItem onClick={handleCloseMenuAkun} >My Profil</MenuItem>
                                             <MenuItem onClick={handleCloseMenuAkun}>Logout</MenuItem>
                                         </MenuList>
                                         </CardContent>
                                     
                                     </Card>
-                                </ClickAwayListener>
                             </Paper>
                         </Grow>
                     )}
                     </Popper>
                 </Toolbar>
             </AppBar>
-            <Sidebar/>
+            <Sidebar open={sideBar} onClose={handleCloseSideBar}/>
         </Fragment>
     )
 }
