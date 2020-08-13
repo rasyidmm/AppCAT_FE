@@ -4,7 +4,7 @@ import { Avatar, Typography } from '@material-ui/core';
 import ProfilSidebar from '../ProfilSidebar';
 import NavSidebar from '../NavSidebar'
 import { Divider, Drawer } from '@material-ui/core';
-const drawerWidth = 190;
+const drawerWidth = 230;
 const useStyles = makeStyles(theme =>({
     drawer: {
         width: drawerWidth,
@@ -43,6 +43,7 @@ const Sidebar = (props)=>{
                     <Divider className={classes.divider} />
                     <NavSidebar/>
                 </Drawer>
+                
           
         </Fragment>
     )
