@@ -82,26 +82,26 @@ const useStyles = makeStyles((theme) => ({
 }))
 const StyledTableCell = withStyles((theme) => ({
     head: {
-      backgroundColor: theme.palette.common.black,
-      color: theme.palette.common.white,
+        backgroundColor: theme.palette.common.black,
+        color: theme.palette.common.white,
     },
     body: {
-      fontSize: 14,
+        fontSize: 14,
     },
-  }))(TableCell);
+    }))(TableCell);
 const UserList = ()=>{
     const classes = useStyles();
     const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(10);
+    const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
-  const handleChangePage = (event, newPage) => {
+    const handleChangePage = (event, newPage) => {
     setPage(newPage);
-  };
+    };
 
-  const handleChangeRowsPerPage = (event) => {
+    const handleChangeRowsPerPage = (event) => {
     setRowsPerPage(+event.target.value);
     setPage(0);
-  };
+    };
     return(
         <Fragment>
             <div className={classes.root} />
@@ -121,7 +121,6 @@ const UserList = ()=>{
                             <IconButton>
                                 <SearchIcon/>
                             </IconButton>
-
                         </div>
                     <TableContainer className={classes.container}>
                         <Table stickyHeader aria-label="sticky table">
