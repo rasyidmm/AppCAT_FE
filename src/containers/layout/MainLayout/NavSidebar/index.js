@@ -96,7 +96,6 @@ const NavSidebar = props => {
             //   to={page.href}
             >
               <div className={classes.icon}><ArrowBackIosIcon/></div>
-              {/* {page.title} */}
               semarang
             </Button>
             

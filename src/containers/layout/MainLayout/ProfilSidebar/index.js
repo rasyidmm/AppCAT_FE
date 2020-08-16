@@ -1,7 +1,7 @@
 import React,{Fragment} from 'react'
 import { makeStyles } from '@material-ui/styles';
 import { Avatar, Typography } from '@material-ui/core';
-import ava from '../../../assets/image/avatar.png'
+import ava from '../../../../assets/image/avatar.png'
 
 const useStyles = makeStyles(theme =>({
     profils:{

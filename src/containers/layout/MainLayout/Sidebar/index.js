@@ -1,6 +1,6 @@
 import React,{Fragment } from 'react'
 import { makeStyles } from '@material-ui/styles';
-import { Avatar, Typography } from '@material-ui/core';
+import { Avatar, Typography ,Card} from '@material-ui/core';
 import ProfilSidebar from '../ProfilSidebar';
 import NavSidebar from '../NavSidebar'
 import { Divider, Drawer } from '@material-ui/core';
@@ -28,12 +28,14 @@ const Sidebar = (props)=>{
     const { open, variant, onClose, className, ...rest } = props;
     return(
         <Fragment>
+            <Card  elevation={5}>
             <Drawer
                 anchor="left"
                 className={classes.drawer}
                 onClose={onClose}
                 open={open}
                 variant="permanent"
+               
                 classes={{
                     paper: classes.drawerPaper,
                 }}
@@ -44,6 +46,8 @@ const Sidebar = (props)=>{
                     <NavSidebar/>
                 </Drawer>
                 
+        </Card>
+            
           
         </Fragment>
     )

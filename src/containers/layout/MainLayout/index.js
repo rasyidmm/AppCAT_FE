@@ -19,7 +19,7 @@ const useStyles = makeStyles(theme => ({
     }
   }));
 
-const Layout =(props)=>{
+const MainLayout =(props)=>{
   const {children} = props
     const classes = useStyles();
     const [openSidebar, setOpenSidebar] = useState(false);
@@ -52,4 +52,4 @@ const Layout =(props)=>{
     )
 }
 
-export default Layout;
+export default MainLayout;
