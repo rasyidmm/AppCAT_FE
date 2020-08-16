@@ -29,7 +29,7 @@ const ProfilSidebar = (props)=>{
                     className={classes.avatar}
                     src={ava}
                 />
-                  <Typography
+                <Typography
                     className={classes.name}
                     variant="h4"
                 >

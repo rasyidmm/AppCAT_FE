@@ -1,12 +1,13 @@
 import React from 'react';
 import { Switch, Redirect } from 'react-router-dom'
 import RouteWithLayout  from '../components/RouteWithLayout/RouteWithLayout'
-import layout from '../containers/layout/MainLayout'
+import MainLayout from '../containers/layout/MainLayout'
+import MiniLayout from '../containers/layout/MiniLayout'
 
 import Dasboards from '../containers/pages/Dasboard'
 import UserList from '../containers/pages/Users/UserList'
 import UserDetail from '../containers/pages/Users/UserDetail'
-import userAdd from '../containers/pages/Users/UserAdd'
+import Register from '../containers/pages/Auth/Register'
 
 const Routes = () => {
     return (
@@ -14,25 +15,26 @@ const Routes = () => {
           <RouteWithLayout
             component={Dasboards}
             exact
-            layout={layout}
+            layout={MainLayout}
             path="/"
         />
           <RouteWithLayout
             component={UserList}
             exact
-            layout={layout}
+            layout={MainLayout}
             path="/user"
         />
           <RouteWithLayout
             component={UserDetail}
             exact
-            layout={layout}
+            layout={MainLayout}
             path="/userdetail"
         />
         <RouteWithLayout
-            component={userAdd}
+            component={Register}
             exact
-            path="/useradd"
+            layout={MiniLayout}
+            path="/register"
         />
       </Switch>)}
 
