@@ -7,6 +7,7 @@ import MiniLayout from '../containers/layout/MiniLayout'
 import Dasboards from '../containers/pages/Dasboard'
 import UserList from '../containers/pages/Users/UserList'
 import UserDetail from '../containers/pages/Users/UserDetail'
+import SoalTambah from '../containers/pages/Soal/SoalTambah'
 import Register from '../containers/pages/Auth/Register'
 import Login from '../containers/pages/Auth/Login'
 
@@ -42,6 +43,12 @@ const Routes = () => {
             exact
             layout={MiniLayout}
             path="/login"
+        />
+        <RouteWithLayout
+            component={SoalTambah}
+            exact
+            layout={MainLayout}
+            path="/soaltambah"
         />
       </Switch>)}
 
