@@ -1,10 +1,10 @@
 /* eslint-disable jsx-a11y/alt-text */
-import React, { Fragment ,useState,useEffect} from 'react'
-import { makeStyles ,withStyles} from '@material-ui/core/styles';
+import React, { Fragment ,useState} from 'react'
+import { makeStyles } from '@material-ui/core/styles';
 import AddPhotoAlternateIcon from "@material-ui/icons/AddPhotoAlternate";
 import ZoomInIcon from '@material-ui/icons/ZoomIn';
 import { Card, CardHeader, CardContent,CardActions,Button,TextField, Grid, Modal ,Fab,Backdrop, Divider} from '@material-ui/core';
-import { render } from '@testing-library/react';
+
 const useStyles = makeStyles((theme) => ({
     Card:{
         backgroundColor: theme.palette.secondary.main
@@ -44,7 +44,7 @@ const useStyles = makeStyles((theme) => ({
 
 
 const SoalTambah = ()=>{
-    const [mainState, setMainState] = useState("initial")
+
     const [model, seModel] = useState(false)
     const [selectedFile, setSelectedFile] = useState("")
 
