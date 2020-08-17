@@ -1,7 +1,7 @@
-import React, { Fragment } from 'react'
+import React, { Fragment ,useState} from 'react'
 import { makeStyles ,withStyles} from '@material-ui/core/styles';
-import { Card, CardHeader, CardContent, CardActions, Avatar, Typography, ButtonBase } from '@material-ui/core';
-import { TablePagination,   Button, Divider,TextField,IconButton,Grid} from '@material-ui/core'
+import { Card, CardHeader, CardContent, CardActions, Modal, Backdrop, ButtonBase } from '@material-ui/core';
+import { TablePagination,   Button, Divider,TextField,IconButton,Grid,Container} from '@material-ui/core'
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -109,15 +109,32 @@ const useStyles = makeStyles((theme) => ({
         maxHeight: '100%',
     },cardprofil:{
         backgroundColor: theme.palette.secondary.main
-    }
+    },
+    modal: {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    cardRestPass:{
+        backgroundColor: theme.palette.secondary.main,
+        maxWidth:400
+    },
 
 }))
 
 
 const UserDetail = ()=>{
     const classes = useStyles();
-    const [page, setPage] = React.useState(0);
-const [rowsPerPage, setRowsPerPage] = React.useState(10);
+    const [page, setPage] = useState(0);
+    const [openResPass, setOpenResPass] = useState(false);
+    const [rowsPerPage, setRowsPerPage] = useState(10);
+    const handleOpenMo = () => {
+        setOpenResPass(true);
+    };
+
+    const handleCloseMo = () => {
+        setOpenResPass(false);
+    };
 
 const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -222,7 +239,14 @@ const handleChangeRowsPerPage = (event) => {
                     color="primary"
                     variant="contained"
                 >
-                    Edit
+                    Save
+                </Button>
+                <Button
+                    color="primary"
+                    variant="contained"
+                    onClick={handleOpenMo}
+                >
+                    Edit Password
                 </Button>
                 </CardActions>
 
@@ -287,7 +311,73 @@ const handleChangeRowsPerPage = (event) => {
                 </CardContent>
             </Card>
             </div>
-            
+            <Modal
+                aria-labelledby="transition-modal-title"
+                aria-describedby="transition-modal-description"
+                className={classes.modal}
+                open={openResPass}
+                onClose={handleCloseMo}
+                closeAfterTransition
+                BackdropComponent={Backdrop}
+                BackdropProps={{
+                timeout: 500,
+                }}
+                >
+                <Grid container
+                    spacing={0}
+                    direction="column"
+                    alignItems="center"
+                    justify="center"
+                    style={{ minHeight: '100vh' }}>
+                    <Grid
+                        item
+                        xs={12}>
+                    <Card className={classes.cardRestPass}   elevation={5}>
+                        <CardHeader
+                            title="Reset Password"
+                            style={{ textAlign: 'center' }}
+                            />
+                            <CardContent>
+                                <TextField
+                                    fullWidth
+                                    label="Password Sekarang"
+                                    margin="dense"
+                                    name="phone"
+                                    type="password"
+                                    variant="outlined"
+                                    required
+                                />
+                                <TextField
+                                    fullWidth
+                                    label="Password Baru"
+                                    margin="dense"
+                                    name="phone"
+                                    type="password"
+                                    variant="outlined"
+                                    required
+                                />
+                                <TextField
+                                    fullWidth
+                                    label="Ulangi Passwrod Baru"
+                                    margin="dense"
+                                    name="phone"
+                                    type="password"
+                                    variant="outlined"
+                                    required
+                                />
+                            </CardContent>
+                            <CardActions CardActions >
+                                <Button variant="outlined" size="medium" color="primary" className={classes.margin}>
+                                    Submit
+                                </Button>
+                                <Button onClick={handleCloseMo} variant="outlined" size="medium" color="primary" className={classes.margin}>
+                                    Cancel
+                                </Button>
+                            </CardActions>
+                    </Card>
+                </Grid>
+            </Grid>
+            </Modal>
         </Fragment>
     )
 }

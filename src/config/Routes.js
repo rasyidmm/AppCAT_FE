@@ -8,6 +8,7 @@ import Dasboards from '../containers/pages/Dasboard'
 import UserList from '../containers/pages/Users/UserList'
 import UserDetail from '../containers/pages/Users/UserDetail'
 import Register from '../containers/pages/Auth/Register'
+import Login from '../containers/pages/Auth/Login'
 
 const Routes = () => {
     return (
@@ -35,6 +36,12 @@ const Routes = () => {
             exact
             layout={MiniLayout}
             path="/register"
+        />
+        <RouteWithLayout
+            component={Login}
+            exact
+            layout={MiniLayout}
+            path="/login"
         />
       </Switch>)}
 

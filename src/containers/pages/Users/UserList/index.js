@@ -37,7 +37,6 @@ const columns = [
     function createData(no,name, TTL, Alamat, lulus,Action) {
         return { no,name, TTL, Alamat, lulus, Action };
     }
-  
     const rows = [
         createData('1','Jhon Kendo', 'Kendal,18-09-1993', 'Jakarta', 3287263),
         createData('2','Jhon Kendo', 'Kendal,18-09-1993', 'Jakarta', 9596961),
