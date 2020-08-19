@@ -46,7 +46,7 @@ const useStyles = makeStyles((theme) => ({
 
 
 
-const SoalTambah = ()=>{
+const SoalDetail = ()=>{
 
     const [model, seModel] = useState(false)
     const [selectedFile, setSelectedFile] = useState("")
@@ -496,4 +496,4 @@ const SoalTambah = ()=>{
         </Fragment>
     )
 }
-export default SoalTambah;
+export default SoalDetail;
